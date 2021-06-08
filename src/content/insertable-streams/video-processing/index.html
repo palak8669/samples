@@ -32,7 +32,7 @@
 <body>
 
 <div id="container">
-    <h1><a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">WebRTC samples</a>
+    <h1><a href="//palak8669.github.io/samples/" title="WebRTC samples homepage">WebRTC samples</a>
         <span>Video processing with insertable streams</span></h1>
 
     <p>This sample shows how to perform processing on a video stream using the experimental
@@ -59,6 +59,7 @@
         <span>Transform:</span>
         <select id="transformSelector" disabled>
             <option selected value="webgl">WebGL</option>
+            <option value="webgpu">WebGPU</option>
             <option value="canvas2d">Canvas2D</option>
             <option value="noop">Do nothing</option>
             <option value="drop">Drop frames at random</option>
@@ -80,9 +81,9 @@
         <b>Note</b>: This sample is using an experimental API that has not yet been standardized. As
         of 2020-11-16, this API is available in Chrome M88 if the experimental code is enabled on
         the command line with
-        <code>--enable-blink-features=WebCodecs,MediaStreamInsertableStreams</code>.
+        <code>--enable-blink-features=WebCodecs,MediaStreamInsertableStreams  --enable-unsafe-webgpu</code>.
     </p>
-    <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/insertable-streams/video-processing"
+    <a href="https://github.com/palak8669/samples/tree/gh-pages/src/content/insertable-streams/video-processing"
        title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
 </div>
@@ -101,6 +102,7 @@
 <script src="js/video-source.js" async></script>
 <script src="js/webcodec-transform.js" async></script>
 <script src="js/webgl-transform.js" async></script>
+<script src="js/webgpu-transform.js" async></script>
 <script src="js/main.js" async></script>
 
 <script src="../../../js/lib/ga.js"></script>
