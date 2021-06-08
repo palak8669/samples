@@ -223,6 +223,9 @@ function initUI() {
       case 'webgl':
         pipeline.updateTransform(new WebGLTransform());
         break;
+      case 'webgpu':
+        pipeline.updateTransform(new WebGPUTransform());
+        break;
       case 'canvas2d':
         pipeline.updateTransform(new CanvasTransform());
         break;
