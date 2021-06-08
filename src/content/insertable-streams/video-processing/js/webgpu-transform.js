@@ -244,11 +244,7 @@ class WebGPUTransform {
 
     /** @override */
     async destroy() {
-        // if (this.device_) {
-        console.log('[WebGPUTransform] Forcing WebGPU context to be lost. this.device_ value', this.device_);
+        console.log('[WebGPUTransform] Forcing WebGPU context to be lost.');
         const destroy = await this.device_.destroy();
-        console.log('[WebGPUTransform] WebGPU context is lost. this.device_ value', this.device_);
-
-        // }
     }
 }
