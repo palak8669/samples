@@ -45,7 +45,7 @@ class WebGPUTransform {
         // });
     }
 
-    async transform(frame, frame2, frame3) {
+    async transform(frame, frame2, frame3, controller) {
         // console.log('[WebGPUTransform] Transform function WebGPU.');
         this.worker_.postMessage(
             {

@@ -25,6 +25,10 @@
   div.box {
     margin: 1em;
   }
+
+  canvas{
+    width: 43%;
+  }
   
   @media screen and (max-width: 400px) {
     .video {

@@ -178,9 +178,9 @@ class Pipeline { // eslint-disable-line no-unused-vars
     if(this.source2_){
       sourceStream2 = await this.source2_.getMediaStream('../../../video/mixed-content.webm');
     }
-    if(this.source3_){
-      sourceStream3 = await this.source3_.getMediaStream('../../../video/pano.webm');
-    }
+    // if(this.source3_){
+    //   sourceStream3 = await this.source3_.getMediaStream('../../../video/pano.webm');
+    // }
     await this.frameTransform_.init();
     try {
       this.processedStream_ = createProcessedMediaStream(

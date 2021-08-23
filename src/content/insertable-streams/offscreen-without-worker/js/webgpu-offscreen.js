@@ -69,6 +69,7 @@ fn main([[location(0)]] fragUV : vec2<f32>) -> [[location(0)]] vec4<f32> {
 
 class WebGPUTransform {
     constructor() {
+        this.i = 0;
         this.screencanvas_ = null;
         this.offscreen_ = null;
         this.worker_ = null;
@@ -104,9 +105,9 @@ class WebGPUTransform {
     async init() {
         // Set video element
         console.log('[WebGPUTransform] Initializing WebGPU.');
+        this.i = this.i + 1;
 
-
-        this.screencanvas_ = document.getElementById('canvas');
+        this.screencanvas_ = document.getElementById('oVC');
         if (!this.screencanvas_) {
             this.screencanvas_ = document.createElement('canvas');
             // this.canvas_ = new OffscreenCanvas(5000, 2500);
@@ -114,9 +115,14 @@ class WebGPUTransform {
             this.screencanvas_.height = 2500;
         }
         const screenCanvas = this.screencanvas_;
-
-        const canvas = screenCanvas.transferControlToOffscreen();
-        this.offscreen_ = canvas;
+        let canvas;
+        if(this.i === 1){
+            canvas = screenCanvas.transferControlToOffscreen();
+            this.offscreen_ = canvas;
+        }
+        else{
+            canvas = this.offscreen_;
+        }
         // this.worker_ = new Worker("offscreencanvas.js");
         // document.getElementById('outputVideoContainer');
         const context = canvas.getContext('gpupresent');
@@ -300,6 +306,8 @@ class WebGPUTransform {
         const verticesBuffer = this.verticesBuffer_;
         frame.close();
         frame2.close();
+        videoFrame.close();
+        videoFrame2.close();
         const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
         passEncoder.setPipeline(renderPipeline);
         passEncoder.setVertexBuffer(0, verticesBuffer);
@@ -307,22 +315,6 @@ class WebGPUTransform {
         passEncoder.draw(6, 1, 0, 0);
         passEncoder.endPass();
         device.queue.submit([commandEncoder.finish()]);
-
-        // document.getElementById('outputVideoContainer') = canvas;
-        document.getElementById('outputVideoContainer').appendChild(this.screencanvas_);
-        
-        // document.body.appendChild(canvas);
-        // // controller.enqueue(new VideoFrame(canvas, {timestamp}));
-        // const outputBitmap = canvas.transferToImageBitmap();
-        // // const outputBitmap = await createImageBitmap(canvas);
-        // // const outputBitmap = await createImageBitmap(videoFrame);
-        // // console.log('outputBitmap', outputBitmap);
-        // const outputFrame = new VideoFrame(outputBitmap, { timestamp });
-        // // this.context_.drawImage(outputFrame);
-        // // outputBitmap.close();
-        // controller.enqueue(outputFrame);
-        // console.log('[WebGPUTransform] canvas type', canvas);
-
     }
 
     /** @override */

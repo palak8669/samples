@@ -210,12 +210,6 @@ function initUI() {
     console.log(`[UI] Selected source: ${sourceType}`);
     let source1, source2, source3;
     switch (sourceType) {
-      case 'camera':
-        source1 = new CameraSource();
-        break;
-      case 'video':
-        source1 = new VideoSource();
-        break;
       case 'multiVideoFeed':
         source1 = new VideoSource();
         source2 = new VideoSource();
@@ -230,9 +224,6 @@ function initUI() {
         source1 = new CameraSource();
         source2 = new VideoSource();
         source3 = new VideoSource();
-        break;
-      case 'pc':
-        source1 = new PeerConnectionSource(new CameraSource());
         break;
       default:
         alert(`unknown source ${sourceType}`);
