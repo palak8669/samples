@@ -312,15 +312,15 @@ class WebGPUTransform {
         document.getElementById('outputVideoContainer').appendChild(this.screencanvas_);
         
         // document.body.appendChild(canvas);
-        // controller.enqueue(new VideoFrame(canvas, {timestamp}));
-        const outputBitmap = canvas.transferToImageBitmap();
-        // const outputBitmap = await createImageBitmap(canvas);
-        // const outputBitmap = await createImageBitmap(videoFrame);
-        // console.log('outputBitmap', outputBitmap);
-        const outputFrame = new VideoFrame(outputBitmap, { timestamp });
-        // this.context_.drawImage(outputFrame);
-        outputBitmap.close();
-        controller.enqueue(outputFrame);
+        // // controller.enqueue(new VideoFrame(canvas, {timestamp}));
+        // const outputBitmap = canvas.transferToImageBitmap();
+        // // const outputBitmap = await createImageBitmap(canvas);
+        // // const outputBitmap = await createImageBitmap(videoFrame);
+        // // console.log('outputBitmap', outputBitmap);
+        // const outputFrame = new VideoFrame(outputBitmap, { timestamp });
+        // // this.context_.drawImage(outputFrame);
+        // // outputBitmap.close();
+        // controller.enqueue(outputFrame);
         // console.log('[WebGPUTransform] canvas type', canvas);
 
     }
