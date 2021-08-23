@@ -41,21 +41,15 @@
         <a href="https://github.com/gpuweb/gpuweb/wiki/Implementation-Status"> WebGPU </a> API.
         There are options for the source of the input stream and the destination of the output stream.
     </p>
-
     <span id="inputVideoContainer"></span>
 
     <div class="box">
         <span>Source:</span>
         <select id="sourceSelector" disabled>
             <option selected value="">(stopped)</option>
-            <option value="camera">Single feed - Camera</option>
-            <option value="video">Single feed - Video</option>
             <option value="multiVideoFeed">Multiple video feeds</option>
-            <option value="canvasAndVideo">Multiple - Video and Canvas feeds</option>
-            <option value="cameraAndVideo">Multiple - Camera and Video feeds</option>
-            <option value="pc">Single feed - Peer connection (from camera)</option>
         </select>
-        <span>Add to page: <input type="checkbox" id="sourceVisible" disabled></span>
+        <span>Add to page: <input type="checkbox" id="sourceVisible" checked="true"></span>
     </div>
     <div class="box">
         <span>Transform:</span>
@@ -73,6 +67,7 @@
     </div>
 
     
+    <!-- <canvas id="oVC"></canvas> -->
     <span id="outputVideoContainer"></span>
 
     <p>View the console to see logging.</p>

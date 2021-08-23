@@ -82,7 +82,6 @@ class WebGPUTransform {
         this.swapChain_ = null;
         this.videoTexture_ = null;
         this.video_ = null;
-        this.emptyCanvas_ = null;
         this.verticesBuffer_ = null;
         this.uniformBindGroup_ = null;
         /**
@@ -105,13 +104,12 @@ class WebGPUTransform {
         console.log('[WebGPUTransform] Initializing WebGPU.');
 
 
-        this.canvas_ = document.getElementById('canvas');
+        this.canvas_ = document.getElementById('oVC');
         if (!this.canvas_) {
             this.canvas_ = document.createElement('canvas');
             this.canvas_.width = 5000;
             this.canvas_.height = 2500;
         }
-        this.emptyCanvas_ = document.createElement('canvas');
         
         const canvas = this.canvas_;
         // document.getElementById('outputVideoContainer');
@@ -318,16 +316,16 @@ class WebGPUTransform {
 
         // document.getElementById('oVC').value = canvas;
         // document.getElementById('outputVideoContainer').value = canvas;
-        var parentNode = document.getElementById('outputVideoContainer');
-        if(parentNode.hasChildNodes()){
-            let children = parentNode.childNodes;
-            for (let i = 0; i < children.length; i++) {
-                parentNode.removeChild(children[i]);
-                // do something with each child as children[i]
-                // NOTE: List is live! Adding or removing children will change the list's `length`
-            }
-        }
-        document.getElementById('outputVideoContainer').appendChild(canvas);
+        // var parentNode = document.getElementById('outputVideoContainer');
+        // if(parentNode.hasChildNodes()){
+        //     let children = parentNode.childNodes;
+        //     for (let i = 0; i < children.length; i++) {
+        //         parentNode.removeChild(children[i]);
+        //         // do something with each child as children[i]
+        //         // NOTE: List is live! Adding or removing children will change the list's `length`
+        //     }
+        // }
+        // document.getElementById('outputVideoContainer').appendChild(canvas);
         
       
         // document.body.appendChild(canvas);
@@ -347,7 +345,7 @@ class WebGPUTransform {
     async destroy() {
         if (this.device_) {
 
-        document.getElementById('outputVideoContainer').removeChild(this.canvas_);
+        // document.getElementById('outputVideoContainer').removeChild(this.canvas_);
         console.log('[WebGPUTransform] Forcing WebGPU context to be lost. this.device_ value', this.device_);
         await this.device_.destroy();
         console.log('[WebGPUTransform] WebGPU context is lost. this.device_ value', this.device_);
