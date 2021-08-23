@@ -126,61 +126,22 @@ function createProcessedMediaStreamTrack(sourceTrack1, sourceTrack2, sourceTrack
     // const screenReader = screenReadable.getReader();
     while (true) {
       var chunk2, chunk3;
-      var readerDone2, readerDone3;
       
       let {value: chunk1, done: readerDone1} = await source1.read();
       if(source2){
         let {value: chunk, done: readerDone} = await source2.read();
         chunk2 = chunk;
-        readerDone2 = readerDone;
       }
       if(source3){
         let {value: chunk, done: readerDone} = await source3.read();
         chunk3 = chunk;
-        readerDone3= readerDone;
       }
-      // console.log(chunk1, chunk2, chunk3);
-      // if(source2){
-      //   chunk2, readerDone2 = await source2.read();
-      // }
-      // if(source3){
-      //   chunk3, readerDone3 = await source3.read();
-      // }
-      // if (chunk1.done && chunk2.done && chunk3.done) return;
       transform(chunk1, chunk2, chunk3);
-      // const newImage = await frame.createImageBitmap();
-      // frame.close();
-      // screenImage.close();
-      // screenImage = newImage;
     }
   }
 
   updateScreenImage();
-  // let {value: chunk1, done: readerDone1} = await source1.read();
-  // let {value: chunk2, done: readerDone2} = await source2.read();
-
-  // transform(chunk1, chunk2);
-  // promise.catch((e) => {
-  //   if (signal.aborted) {
-  //     console.log(
-  //         '[createProcessedMediaStreamTrack] Shutting down streams after abort.');
-  //   } else {
-  //     console.error(
-  //         '[createProcessedMediaStreamTrack] Error from stream transform:', e);
-  //   }
-  //   source.cancel(e);
-  //   sink.abort(e);
-  // });
-
-  // debug['processor'] = processor;
   debug['generator'] = generator;
-  // debug['transformStream'] = transformer;
-  // console.log(
-  //     '[createProcessedMediaStreamTrack] Created MediaStreamTrackProcessor, ' +
-  //         'MediaStreamTrackGenerator, and TransformStream.',
-  //     'debug.processor =', processor, 'debug.generator =', generator,
-  //     'debug.transformStream =', transformer);
-
   return generator;
 }
 
@@ -272,15 +233,15 @@ function initUI() {
     console.log(`[UI] Changed source visibility: ${
         sourceVisibleCheckbox.checked ? 'added' : 'removed'}`);
     if (pipeline) {
-      source1, source2, source3 = pipeline.getSource();
+      console.log(pipeline.getSource());
+      let source1, source2, source3 = pipeline.getSource();
+      // let source1 = pipeline.getSource1();
+
       if (source1) {
         source1.setVisibility(sourceVisibleCheckbox.checked);
       }
       if (source2) {
         source2.setVisibility(sourceVisibleCheckbox.checked);
-      }
-      if (source3) {
-        source3.setVisibility(sourceVisibleCheckbox.checked);
       }
 
     }

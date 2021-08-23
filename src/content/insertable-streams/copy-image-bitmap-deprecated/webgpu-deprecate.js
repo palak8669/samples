@@ -117,6 +117,12 @@ class WebGPUTransform {
         // document.getElementById('outputVideoContainer');
         const context = canvas.getContext('webgpu');
         const adapter = await navigator.gpu.requestAdapter();
+
+        const oldRequestAdapter = GPU.prototype.requestAdapter;
+        GPU.prototype.requestAdapter = function() {
+            return oldRequestAdapter.call(this, { powerPreference: 'low-power' });
+        }
+
         const device = await adapter.requestDevice();
         this.device_ = device;
         if (this.device_ === null) return;

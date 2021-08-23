@@ -12,11 +12,6 @@
     height: calc(var(--width) * 0.75);
     vertical-align: top;
   }
-  
-  canvas {
-    max-width: 100%;
-    width: 100%;
-}
 
   .sourceVideo {
     margin: 0 20px 20px 0;
