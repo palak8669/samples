@@ -1,7 +1,7 @@
 importScripts('./multi_video_main.js')
 'use strict';
 
-let mainTransform;
+let mainTransform = null;
 
 onmessage = async (event) => {
     const { operation } = event.data;

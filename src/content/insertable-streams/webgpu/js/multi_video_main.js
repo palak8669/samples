@@ -159,7 +159,7 @@ class WebGPUTransform {
         if (!frame) {
             return;
         }
-        // Using GPUExternalTexture(when it's implement for Breakout Box frames) will
+        // Using GPUExternalTexture(when it's implemented for Breakout Box frames) will
         // avoid making extra copies through ImageBitmap.
         const videoBitmap = await createImageBitmap(frame, { resizeWidth: 480, resizeHeight: 270 });
         device.queue.copyExternalImageToTexture(
